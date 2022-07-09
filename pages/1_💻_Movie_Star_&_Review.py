@@ -153,8 +153,7 @@ select_movie_code = st.sidebar.selectbox(
     "🔎 확인하고 싶은 영화 코드를 선택해주세요.",
     movie_list()['영화코드'].tolist()
 )
-st.write('내가 선택한 영화코드는 ', select_movie_code, '입니다.')
-callout(f'내가 선택한 영화 코드는 {select_movie_code} 입니다')
+st.write('선택한 영화코드는 ', select_movie_code, '입니다.')
          
 line_break()
 section('영화 정보')
