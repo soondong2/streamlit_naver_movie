@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import requests
+from bs4 import BeautifulSoup as bs
 from html_module import line_break, section, callout, title
 from PIL import Image
 
@@ -30,6 +32,45 @@ callout([
 ])
 line_break()
 
+page_no = 1
+ 
+def get_html(page_no):
+    url = f"https://movie.naver.com/movie/point/af/list.naver?st=&target=after&page={page_no}"
+    headers = {'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36'}
+    response = requests.get(url, headers=headers)
+
+    html = bs(response.content, 'lxml')
+    
+    return html
+
+@st.cache  
+# movie list  
+def movie_list():
+    html = get_html(page_no)
+    movie_list = html.select("#current_movie > option")
+
+    df = pd.DataFrame()
+    
+    제목 = []
+    영화코드 = []
+
+    for idx, content in enumerate(movie_list[1:]):
+        제목.append(content.text)
+        영화코드.append(content["value"])
+
+    df = pd.DataFrame(dict(제목 = 제목, 영화코드 = 영화코드))
+    
+    return df
+
+# movie title & movie code
+title('영화 제목 및 코드')
+callout([
+    '현재 네이버 영화 사이트에서 평점 및 리뷰를 확인해볼 수 있는 영화 제목과 영화 코드 목록을 나타냅니다. 원하는 영화를 선택하여 영화 코드를 확인하세요!'
+])
+
+line_break()
+
+st.dataframe(movie_list())
 # other section ...
 section('Web Scraping')
 link = 'https://movie.naver.com/'
