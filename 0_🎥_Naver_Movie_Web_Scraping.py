@@ -63,7 +63,7 @@ def movie_list():
     return df
 
 # movie title & movie code
-section('Movie Title & Code')
+section('Movie List')
 callout([
     '현재 네이버 영화 사이트에서 평점 및 리뷰를 확인해볼 수 있는 영화 제목과 영화 코드 목록을 나타냅니다. 원하는 영화를 선택하여 영화 코드를 확인하세요!'
 ])
