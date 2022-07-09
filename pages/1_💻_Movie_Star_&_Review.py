@@ -169,7 +169,11 @@ result = all_review(code, page_no)
 file_name = f"movie_review_{code}"
 result.to_csv(file_name, index=False)
 
-data = pd.read_csv(file_name).set_index("번호")
+def load_data():
+    data = pd.read_csv(file_name)
+    return data
+
+data = load_data()
 
 if select_movie_code in movie_list()['영화코드'].tolist():
     data_load_state = st.text('Loading data...')
