@@ -166,7 +166,7 @@ section('평점 및 리뷰')
 
 if select_movie_code in movie_list()['영화코드'].tolist():
     data_load_state = st.text('Loading data...')
-    data_load_state = st.text('1000 페이지를 가져올 경우 시간이 오래 걸립니다.')
     st.dataframe(all_review(select_movie_code, page_no))
+    st.pregress()
     data_load_state.text("")
     
