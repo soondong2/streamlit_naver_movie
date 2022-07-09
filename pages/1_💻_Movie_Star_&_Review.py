@@ -161,4 +161,7 @@ if select_movie_code in movie_list()['영화코드'].tolist():
     st.dataframe(movie_info(select_movie_code, page_no))
 
 line_break()
-section('영화 정보')
+section('평점 리뷰')
+
+if select_movie_code in movie_list()['영화코드'].tolist():
+    st.dataframe(all_review(select_movie_code, page_no))
