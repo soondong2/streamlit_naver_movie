@@ -173,5 +173,5 @@ data = pd.read_csv(file_name).set_index("번호")
 
 if select_movie_code in movie_list()['영화코드'].tolist():
     data_load_state = st.text('Loading data...')
-    st.dataframe(data))
+    st.dataframe(data)
     data_load_state.text("")
