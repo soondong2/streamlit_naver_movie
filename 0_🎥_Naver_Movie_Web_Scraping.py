@@ -48,7 +48,7 @@ def movie_list():
 
 # 개요 section
 section('개요')
-image = Image.open('images/Untitled.png')
+image = Image.open('Images/Untitled.png')
 st.image(image,)
 callout([
     '안녕하세요! 네이버 영화 사이트의 평점 및 리뷰를 웹 스크래핑 했습니다.',
