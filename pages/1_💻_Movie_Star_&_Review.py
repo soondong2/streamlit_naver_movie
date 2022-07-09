@@ -164,18 +164,14 @@ if select_movie_code in movie_list()['영화코드'].tolist():
 line_break()
 section('평점 및 리뷰')
 
+# file save & load
+result = all_review(code, page_no)
+file_name = f"movie_review_{code}"
+result.to_csv(file_name, index=False)
+
+data = pd.read_csv(file_name).set_index("번호")
+
 if select_movie_code in movie_list()['영화코드'].tolist():
     data_load_state = st.text('Loading data...')
-    st.dataframe(all_review(select_movie_code, page_no))
+    st.dataframe(data))
     data_load_state.text("")
-    
-plot = st.sidebar.selectbox(
-    "📊 시각화할 그래프를 선택해주세요.",
-    ['Count Plot',
-    'Kde Plot']
-    )
-
-if plot == "Count Plot":
-    sns_count_plot(data=all_review(select_movie_code, page_no), x='평점')
-else:
-    sns_line_plot(data=all_review(select_movie_code, page_no), x='평점')
