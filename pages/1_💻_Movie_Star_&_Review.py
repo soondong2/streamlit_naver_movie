@@ -154,7 +154,8 @@ select_movie_code = st.sidebar.selectbox(
     movie_list()['영화코드'].tolist()
 )
 st.write('내가 선택한 영화코드는 ', select_movie_code, '입니다.')
-
+callout(['내가 선택한 영화 코드는', select_movie_code, '입니다])
+         
 line_break()
 section('영화 정보')
 
@@ -162,7 +163,10 @@ if select_movie_code in movie_list()['영화코드'].tolist():
     st.dataframe(movie_info(select_movie_code, page_no))
 
 line_break()
-section('평점 리뷰')
+section('평점 및 리뷰')
 
 if select_movie_code in movie_list()['영화코드'].tolist():
+    data_load_state = st.text('Loading data...')
     st.dataframe(all_review(select_movie_code, page_no))
+    data_load_state.text("")
+    
