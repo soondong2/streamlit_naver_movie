@@ -168,6 +168,7 @@ data = all_review(select_movie_code, page_no)
 
 if select_movie_code in movie_list()['영화코드'].tolist():
     data_load_state = st.text('Loading data...')
+    data = all_review(select_movie_code, page_no)
     st.dataframe(data)
     data_load_state.text("")
     
