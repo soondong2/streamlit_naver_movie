@@ -175,7 +175,7 @@ plot = st.sidebar.selectbox(
     'Kde Plot']
     )
 
-if plot == "Count Plot"
+if plot == "Count Plot":
     sns_count_plot(data=all_review(select_movie_code, page_no), x='평점')
 else:
     sns_line_plot(data=all_review(select_movie_code, page_no), x='평점')
