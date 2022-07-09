@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import requests
+import time
 import re
 from bs4 import BeautifulSoup as bs
 from html_module import section, callout, line_break, title
