@@ -22,7 +22,7 @@ st.balloons()  # 풍선 효과
 title('네이버 : 영화 평점 및 리뷰')
 
 # 개요 section
-section('개요')
+section('Summary')
 image = Image.open('Images/Untitled.png')
 st.image(image,)
 callout([
