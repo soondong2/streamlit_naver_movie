@@ -156,7 +156,7 @@ def sns_count_plot(data, x):
     st.pyplot(fig)
     
 # seaborn - kde plot 그리기
-def sns_count_plot(data, x):
+def sns_kde_plot(data, x):
     fig = plt.figure(figsize=(10, 4))
     sns.kdeplot(data=data, x=x)
     st.pyplot(fig)
