@@ -156,10 +156,10 @@ def sns_count_plot(data, x):
     plt.xlabel('Star')
     st.pyplot(fig)
     
-# seaborn - kde plot
+# seaborn - hist plot
 def sns_dist_plot(data, x):
     fig = plt.figure(figsize=(10, 5))
-    sns.distplot(data=data, x=x)
+    sns.histplot(data=data, x=x, bins=40)
     plt.xlabel('Star')
     st.pyplot(fig)
 
@@ -192,11 +192,11 @@ section('평점 시각화')
 plot = st.sidebar.selectbox(
     "📊 시각화할 그래프를 선택해주세요.",
     ['Count Plot',
-    'Dist Plot']
+    'Hist Plot']
     )
 
 if plot == "Count Plot":
     sns_count_plot(all_review(select_movie_code, page_no), '평점')
     
 elif plot == "Dist Plot":
-    sns_dist_plot(all_review(select_movie_code, page_no), '평점')
+    sns_hist_plot(all_review(select_movie_code, page_no), '평점')
