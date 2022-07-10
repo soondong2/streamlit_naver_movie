@@ -157,7 +157,7 @@ def sns_count_plot(data, x):
     st.pyplot(fig)
     
 # seaborn - hist plot
-def sns_dist_plot(data, x):
+def sns_hist_plot(data, x):
     fig = plt.figure(figsize=(10, 5))
     sns.histplot(data=data, x=x, bins=40)
     plt.xlabel('Star')
