@@ -147,6 +147,18 @@ def movie_info(code, page_no):
     
     return movie_info_df
 
+# seaborn - count plot 그리기
+def sns_count_plot(data, x):
+    fig = plt.figure(figsize=(10, 4))
+    sns.countplot(data=data, x=x)
+    st.pyplot(fig)
+    
+# seaborn - kde plot 그리기
+def sns_count_plot(data, x):
+    fig = plt.figure(figsize=(10, 4))
+    sns.kdeplot(data=data, x=x)
+    st.pyplot(fig)
+
 title('영화 정보와 평점 및 리뷰 확인하기')
 section('영화 코드')
 select_movie_code = st.sidebar.selectbox(
@@ -180,11 +192,7 @@ plot = st.sidebar.selectbox(
     )
 
 if plot == "Count Plot":
-    fig = plt.figure(figsize=(10, 5))
     sns_count_plot(all_review(select_movie_code, page_no), '평점')
-    st.pyplot(fig)
     
 elif plot == 'Kde Plot':
-    fig = plt.figure(figsize=(10, 5))
     sns_line_plot(all_review(select_movie_code, page_no), '평점')
-    st.pyplot(fig)
