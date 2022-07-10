@@ -166,7 +166,4 @@ line_break()
 # star & review
 section('평점 및 리뷰')
 
-if select_movie_code in movie_list()['영화코드'].tolist():
-    data_load_state = st.text('Loading data...')
-    st.dataframe(all_review(select_movie_code, page_no))
-    data_load_state.text("")
+
