@@ -149,16 +149,16 @@ def movie_info(code, page_no):
     
     return movie_info_df
 
-# seaborn - count plot 그리기
+# seaborn - count plot
 def sns_count_plot(data, x):
-    fig = plt.figure(figsize=(10, 4))
+    fig = plt.figure(figsize=(10, 5))
     sns.countplot(data=data, x=x)
     plt.xlabel('Star')
     st.pyplot(fig)
     
-# seaborn - kde plot 그리기
+# seaborn - kde plot
 def sns_kde_plot(data, x):
-    fig = plt.figure(figsize=(10, 4))
+    fig = plt.figure(figsize=(10, 5))
     sns.kdeplot(data=data, x=x)
     plt.xlabel('Star')
     st.pyplot(fig)
