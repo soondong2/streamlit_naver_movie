@@ -178,3 +178,8 @@ plot = st.sidebar.selectbox(
     ['Count Plot',
     'Kde Plot']
     )
+
+if plot == "Count Plot":
+    sns_count_plot(all_review(select_movie_code, page_no), '평점')
+else:
+    sns_line_plot(all_review(select_movie_code, page_no), '평점')
