@@ -180,6 +180,10 @@ plot = st.sidebar.selectbox(
     )
 
 if plot == "Count Plot":
+    fig = plt.figure(figsize=(10, 5))
     sns_count_plot(all_review(select_movie_code, page_no), '평점')
+    st.pyplot(fig)
 else:
+    fig = plt.figure(figsize=(10, 5))
     sns_line_plot(all_review(select_movie_code, page_no), '평점')
+    st.pyplot(fig)
