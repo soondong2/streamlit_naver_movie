@@ -184,7 +184,7 @@ if plot == "Count Plot":
     sns_count_plot(all_review(select_movie_code, page_no), '평점')
     st.pyplot(fig)
     
-elif page == 'Kde Plot':
+elif plot == 'Kde Plot':
     fig = plt.figure(figsize=(10, 5))
     sns_line_plot(all_review(select_movie_code, page_no), '평점')
     st.pyplot(fig)
