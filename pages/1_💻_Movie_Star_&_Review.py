@@ -157,9 +157,9 @@ def sns_count_plot(data, x):
     st.pyplot(fig)
     
 # seaborn - kde plot
-def sns_dis_plot(data, x):
+def sns_dist_plot(data, x):
     fig = plt.figure(figsize=(10, 5))
-    sns.displot(data=data, x=x)
+    sns.distplot(data=data, x=x)
     plt.xlabel('Star')
     st.pyplot(fig)
 
@@ -192,11 +192,11 @@ section('평점 시각화')
 plot = st.sidebar.selectbox(
     "📊 시각화할 그래프를 선택해주세요.",
     ['Count Plot',
-    'Dis Plot']
+    'Dist Plot']
     )
 
 if plot == "Count Plot":
     sns_count_plot(all_review(select_movie_code, page_no), '평점')
     
-elif plot == "Dis Plot":
-    sns_dis_plot(all_review(select_movie_code, page_no), '평점')
+elif plot == "Dist Plot":
+    sns_dist_plot(all_review(select_movie_code, page_no), '평점')
