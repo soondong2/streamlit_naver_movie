@@ -162,20 +162,11 @@ if select_movie_code in movie_list()['영화코드'].tolist():
     st.dataframe(movie_info(select_movie_code, page_no))
 
 line_break()
+
+# star & review
 section('평점 및 리뷰')
-
-# file save & load
-result = all_review(code, page_no)
-file_name = f"movie_review_{code}"
-result.to_csv(file_name, index=False)
-
-def load_data():
-    data = pd.read_csv(file_name)
-    return data
-
-data = load_data()
 
 if select_movie_code in movie_list()['영화코드'].tolist():
     data_load_state = st.text('Loading data...')
-    st.dataframe(data)
+    st.dataframe(all_review(select_movie_code, page_no))
     data_load_state.text("")
