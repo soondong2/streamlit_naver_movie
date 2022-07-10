@@ -5,6 +5,8 @@ import requests
 import time
 import re
 from bs4 import BeautifulSoup as bs
+import matplotlib.pyplot as plt
+import seaborn as sns
 from html_module import section, callout, line_break, title
 
 # 전체 페이지 설정
