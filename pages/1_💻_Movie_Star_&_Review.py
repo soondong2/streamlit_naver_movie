@@ -199,4 +199,4 @@ if plot == "Count Plot":
     sns_count_plot(all_review(select_movie_code, page_no), '평점')
     
 elif plot == "Kde Plot":
-    sns_hist_plot(all_review(select_movie_code, page_no), '평점')
+    sns_kde_plot(all_review(select_movie_code, page_no), '평점')
