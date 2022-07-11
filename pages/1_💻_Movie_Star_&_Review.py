@@ -156,10 +156,10 @@ def sns_count_plot(data, x, xlabel):
     plt.xlabel(xlabel)
     st.pyplot(fig)
 
-# seaborn - hist plot
-def sns_hist_plot(data, x, xlabel):
+# seaborn - kde plot
+def sns_kde_plot(data, x, xlabel):
     fig = plt.figure(figsize=(10, 5))
-    sns.histplot(data=data, x=x)
+    sns.kdeplot(data=data, x=x)
     plt.xlabel(xlabel)
     st.pyplot(fig)   
  
@@ -209,5 +209,5 @@ elif plot == '날짜':
     ])
     line_break()
     data_load_state = st.text('Loading graph...')
-    sns_hist_plot(all_review(select_movie_code, page_no), '날짜', 'Date')
+    sns_kde_plot(all_review(select_movie_code, page_no), '날짜', 'Date')
     data_load_state.text("")
