@@ -160,7 +160,7 @@ title('영화 정보와 평점 및 리뷰 확인하기')
 section('영화 코드')
 select_movie_code = st.sidebar.selectbox(
     "🔎 확인하고 싶은 영화 코드를 선택해주세요.",
-    movie_list()['영화코드'].tolist()
+    sorted(movie_list()['영화코드'].tolist())
 )
 st.write('선택한 영화코드는 ', select_movie_code, '입니다.')
          
@@ -175,7 +175,7 @@ line_break()
 
 # star & review
 section('평점 및 리뷰')
-if select_movie_code in movie_list()['영화코드'].tolist():
+if select_movie_code in movie_list()['영화코드'].tolist().so:
     data_load_state = st.text('Loading data...')
     st.dataframe(all_review(select_movie_code, page_no))
     data_load_state.text("")
