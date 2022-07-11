@@ -192,6 +192,5 @@ data_load_state.text("")
 line_break()
 
 data_load_state = st.text('가장 많은 평점을 받은 점수를 계산 중입니다...')
-result = f'가장 많은 평점을 받은 점수는', {data['평점'].value_counts().index[0]}, '점 입니다. 👏'
-st.markdown(## result)
+st.write('가장 많은 평점을 받은 점수는', {data['평점'].value_counts().index[0]}, '점 입니다. 👏')
 data_load_state.text("")
