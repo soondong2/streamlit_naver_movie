@@ -152,7 +152,7 @@ def movie_info(code, page_no):
 # seaborn - count plot
 def sns_count_plot(data, x):
     fig = plt.figure(figsize=(10, 5))
-    sns.countplot(data=data, x=x, cmap='Blues')
+    sns.countplot(data=data, x=x)
     plt.xlabel('Star')
     st.pyplot(fig)
 
