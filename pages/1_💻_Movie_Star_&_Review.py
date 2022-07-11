@@ -189,5 +189,6 @@ data_load_state = st.text('Loading graph...')
 sns_count_plot(all_review(select_movie_code, page_no), '평점', 'Star')
 data_load_state.text("")
 
-
-st.subheader('가장 많은 평점을 받은 점수는', all_review(select_movie_code, page_no)['평점'].value_counts().index[0], '점 입니다. 👏')
+data_load_state = st.text('가장 많은 평점을 받은 점수를 계산 중입니다...')
+st.write('가장 많은 평점을 받은 점수는', all_review(select_movie_code, page_no)['평점'].value_counts().index[0], '점 입니다. 👏')
+data_load_state.text("")
