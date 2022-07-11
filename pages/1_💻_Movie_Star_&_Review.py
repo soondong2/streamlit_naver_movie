@@ -156,6 +156,13 @@ def sns_count_plot(data, x, xlabel):
     plt.xlabel(xlabel)
     st.pyplot(fig)
 
+# seaborn - hist plot
+def sns_hist_plot(data, x, xlabel):
+    fig = plt.figure(figsize=(10, 5))
+    sns.histplot(data=data, x=x)
+    plt.xlabel(xlabel)
+    st.pyplot(fig)   
+ 
 title('영화 정보와 평점 및 리뷰 확인하기')
 section('영화 코드')
 select_movie_code = st.sidebar.selectbox(
@@ -179,11 +186,28 @@ if select_movie_code in movie_list()['영화코드'].tolist():
     data_load_state = st.text('Loading data...')
     st.dataframe(all_review(select_movie_code, page_no))
     data_load_state.text("")
-    
+
 # visualization
 section('시각화')
-st.sidebar("📊 평점 컬럼을 시각화합니다.")
+plot = st.sidebar.selectbox(
+    "📊 시각화할 컬럼을 선택해주세요.",
+    ['평점',
+    '날짜'])
 
-data_load_state = st.text('Loading graph...')
-sns_count_plot(all_review(select_movie_code, page_no), '평점', 'Star')
-data_load_state.text("")
+if plot == '평점':
+    callout([
+    '평점 컬럼의 분포를 시각화합니다.',
+    ])
+    line_break()
+    data_load_state = st.text('Loading graph...')
+    sns_count_plot(all_review(select_movie_code, page_no), '평점', 'Star')
+    data_load_state.text("")
+
+elif plot == '날짜':
+    callout([
+    '날짜 컬럼의 분포를 시각화합니다.',
+    ])
+    line_break()
+    data_load_state = st.text('Loading graph...')
+    sns_hist_plot(all_review(select_movie_code, page_no), '날짜', 'Date')
+    data_load_state.text("")
