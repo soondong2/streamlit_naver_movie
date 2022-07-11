@@ -189,4 +189,4 @@ data_load_state.text("")
 
 line_break()
 
-st.write('가장 많은 평점을 받은 점수는', all_review(select_movie_code, page_no)['평점'].value_counts().index[0]), '입니다.')
+st.write('가장 많은 평점을 받은 점수는', all_review(select_movie_code, page_no)['평점'].value_counts().index[0], '입니다.')
