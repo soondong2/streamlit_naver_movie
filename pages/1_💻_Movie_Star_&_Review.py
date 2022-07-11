@@ -156,10 +156,10 @@ def sns_count_plot(data, x):
     plt.xlabel('Star')
     st.pyplot(fig)
     
-# seaborn - hist plot
-def sns_hist_plot(data, x):
+# seaborn - kde plot
+def sns_kde_plot(data, x):
     fig = plt.figure(figsize=(10, 5))
-    sns.histplot(data=data, x=x, bins=40)
+    sns.kdeplot(data=data, x=x)
     plt.xlabel('Star')
     st.pyplot(fig)
 
@@ -192,11 +192,11 @@ section('평점 시각화')
 plot = st.sidebar.selectbox(
     "📊 시각화할 그래프를 선택해주세요.",
     ['Count Plot',
-    'Hist Plot']
+    'Kde Plot']
     )
 
 if plot == "Count Plot":
     sns_count_plot(all_review(select_movie_code, page_no), '평점')
     
-elif plot == "Hist Plot":
+elif plot == "Kde Plot":
     sns_hist_plot(all_review(select_movie_code, page_no), '평점')
