@@ -175,9 +175,10 @@ line_break()
 
 # star & review
 section('평점 및 리뷰')
+data = all_review(select_movie_code, page_no)
 if select_movie_code in movie_list()['영화코드'].tolist():
     data_load_state = st.text('Loading data...')
-    st.dataframe(all_review(select_movie_code, page_no))
+    st.dataframe(data)
     data_load_state.text("")
 
 # visualization
@@ -186,9 +187,10 @@ callout(['평점 컬럼의 분포를 시각화합니다.'])
 line_break()
 
 data_load_state = st.text('Loading graph...')
-sns_count_plot(all_review(select_movie_code, page_no), '평점', 'Star')
+sns_count_plot(data, '평점', 'Star')
 data_load_state.text("")
+line_break()
 
 data_load_state = st.text('가장 많은 평점을 받은 점수를 계산 중입니다...')
-st.write('가장 많은 평점을 받은 점수는', all_review(select_movie_code, page_no)['평점'].value_counts().index[0], '점 입니다. 👏')
+st.write('가장 많은 평점을 받은 점수는', data['평점'].value_counts().index[0], '점 입니다. 👏')
 data_load_state.text("")
