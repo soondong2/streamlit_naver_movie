@@ -190,7 +190,7 @@ plot = st.sidebar.selectbox(
 
 if plot == '평점':
     callout([
-    '평점 컬럼의 분포를 시각화합니다..',
+    '평점 컬럼의 분포를 시각화합니다.',
     ])
     line_break()
     sns_count_plot(all_review(select_movie_code, page_no), '평점', 'Star')
