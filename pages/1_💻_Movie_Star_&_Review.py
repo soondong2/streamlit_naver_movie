@@ -182,10 +182,7 @@ if select_movie_code in movie_list()['영화코드'].tolist():
     
 # visualization
 section('시각화')
-plot = st.sidebar(
-    "📊 평점 컬럼을 시각화합니다.",
-    ['평점']
-    )
+st.sidebar("📊 평점 컬럼을 시각화합니다.",)
 
 data_load_state = st.text('Loading graph...')
 sns_count_plot(all_review(select_movie_code, page_no), '평점', 'Star')
