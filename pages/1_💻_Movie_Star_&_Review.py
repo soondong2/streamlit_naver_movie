@@ -187,7 +187,6 @@ plot = st.sidebar(
     ['평점']
     )
 
-if plot == '평점':
-    data_load_state = st.text('Loading graph...')
-    sns_count_plot(all_review(select_movie_code, page_no), '평점', 'Star')
-    data_load_state.text("")
+data_load_state = st.text('Loading graph...')
+sns_count_plot(all_review(select_movie_code, page_no), '평점', 'Star')
+data_load_state.text("")
