@@ -209,5 +209,5 @@ elif plot == '날짜':
     ])
     line_break()
     data_load_state = st.text('Loading graph...')
-    st.line_chart(all_review(select_movie_code, page_no)[['날짜]])
+    st.line_chart(all_review(select_movie_code, page_no)[['날짜']])
     data_load_state.text("")
