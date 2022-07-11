@@ -155,13 +155,6 @@ def sns_count_plot(data, x, xlabel):
     sns.countplot(data=data, x=x)
     plt.xlabel(xlabel)
     st.pyplot(fig)
-
-# seaborn - kde plot
-def sns_kde_plot(data, x, xlabel):
-    fig = plt.figure(figsize=(10, 5))
-    sns.kdeplot(data=data, x=x)
-    plt.xlabel(xlabel)
-    st.pyplot()   
  
 title('영화 정보와 평점 및 리뷰 확인하기')
 section('영화 코드')
@@ -189,10 +182,7 @@ if select_movie_code in movie_list()['영화코드'].tolist():
 
 # visualization
 section('시각화')
-plot = st.sidebar.selectbox(
-    "📊 시각화할 컬럼을 선택해주세요.",
-    ['평점',
-    '날짜'])
+plot = st.sidebar(['평점의 분포를 시각화합니다.'])
 
 if plot == '평점':
     callout([
@@ -203,11 +193,4 @@ if plot == '평점':
     sns_count_plot(all_review(select_movie_code, page_no), '평점', 'Star')
     data_load_state.text("")
 
-elif plot == '날짜':
-    callout([
-    '날짜 컬럼의 분포를 시각화합니다.',
-    ])
-    line_break()
-    data_load_state = st.text('Loading graph...')
-    st.area_chart(all_review(select_movie_code, page_no)[['날짜']])
-    data_load_state.text("")
+ 
