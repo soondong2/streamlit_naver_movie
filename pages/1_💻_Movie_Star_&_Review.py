@@ -152,14 +152,7 @@ def movie_info(code, page_no):
 # seaborn - count plot
 def sns_count_plot(data, x):
     fig = plt.figure(figsize=(10, 5))
-    sns.countplot(data=data, x=x)
-    plt.xlabel('Star')
-    st.pyplot(fig)
-    
-# seaborn - kde plot
-def sns_kde_plot(data, x):
-    fig = plt.figure(figsize=(10, 5))
-    sns.kdeplot(data=data, x=x)
+    sns.countplot(data=data, x=x, cmap='Blues')
     plt.xlabel('Star')
     st.pyplot(fig)
 
@@ -190,13 +183,12 @@ if select_movie_code in movie_list()['영화코드'].tolist():
 # visualization
 section('평점 시각화')
 plot = st.sidebar.selectbox(
-    "📊 시각화할 그래프를 선택해주세요.",
-    ['Count Plot',
-    'Kde Plot']
+    "📊 시각화할 컬럼을 선택해주세요.",
+    ['평점',
+    '날짜']
     )
 
-if plot == "Count Plot":
+if plot == '평점':
     sns_count_plot(all_review(select_movie_code, page_no), '평점')
-    
-elif plot == "Kde Plot":
-    sns_kde_plot(all_review(select_movie_code, page_no), '평점')
+elif plot == '날짜':
+    sns_count_plot(all_review(select_movie_code, page_no), '날짜')
