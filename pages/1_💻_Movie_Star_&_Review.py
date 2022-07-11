@@ -150,10 +150,10 @@ def movie_info(code, page_no):
     return movie_info_df
 
 # seaborn - count plot
-def sns_count_plot(data, x):
+def sns_count_plot(data, x, xlabel):
     fig = plt.figure(figsize=(10, 5))
     sns.countplot(data=data, x=x)
-    plt.xlabel('Star')
+    plt.xlabel(xlabel)
     st.pyplot(fig)
 
 title('영화 정보와 평점 및 리뷰 확인하기')
@@ -181,7 +181,7 @@ if select_movie_code in movie_list()['영화코드'].tolist():
     data_load_state.text("")
     
 # visualization
-section('평점 시각화')
+section('시각화')
 plot = st.sidebar.selectbox(
     "📊 시각화할 컬럼을 선택해주세요.",
     ['평점',
@@ -189,6 +189,15 @@ plot = st.sidebar.selectbox(
     )
 
 if plot == '평점':
-    sns_count_plot(all_review(select_movie_code, page_no), '평점')
+    callout([
+    '평점 컬럼의 분포를 시각화합니다..',
+    ])
+    line_break()
+    sns_count_plot(all_review(select_movie_code, page_no), '평점', 'Star')
+    
 elif plot == '날짜':
-    sns_count_plot(all_review(select_movie_code, page_no), '날짜')
+    callout([
+    '날짜 컬럼의 분포를 시각화합니다.',
+    ])
+    line_break()
+    sns_count_plot(all_review(select_movie_code, page_no), '날짜', 'Date')
