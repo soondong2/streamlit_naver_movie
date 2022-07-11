@@ -160,7 +160,7 @@ title('영화 정보와 평점 및 리뷰 확인하기')
 section('영화 코드')
 select_movie_code = st.sidebar.selectbox(
     "🔎 확인하고 싶은 영화 코드를 선택해주세요.",
-    sorted(movie_list()['영화코드'].tolist())
+    sorted(movie_list()['영화코드'].tolist(), reverse=True)
 )
 st.write('선택한 영화코드는 ', select_movie_code, '입니다.')
          
@@ -183,21 +183,11 @@ if select_movie_code in movie_list()['영화코드'].tolist():
 # visualization
 section('시각화')
 plot = st.sidebar.selectbox(
-    "📊 시각화할 컬럼을 선택해주세요.",
-    ['평점',
-    '날짜']
+    "📊 평점 컬럼을 시각화합니다.",
+    ['평점']
     )
 
 if plot == '평점':
-    callout([
-    '평점 컬럼의 분포를 시각화합니다.',
-    ])
-    line_break()
+    data_load_state = st.text('Loading graph...')
     sns_count_plot(all_review(select_movie_code, page_no), '평점', 'Star')
-    
-elif plot == '날짜':
-    callout([
-    '날짜 컬럼의 분포를 시각화합니다.',
-    ])
-    line_break()
-    sns_count_plot(all_review(select_movie_code, page_no), '날짜', 'Date')
+    data_load_state.text("")
