@@ -161,7 +161,7 @@ def sns_kde_plot(data, x, xlabel):
     fig = plt.figure(figsize=(10, 5))
     sns.kdeplot(data=data, x=x)
     plt.xlabel(xlabel)
-    st.pyplot(fig)   
+    st.pyplot()   
  
 title('영화 정보와 평점 및 리뷰 확인하기')
 section('영화 코드')
